@@ -22,7 +22,7 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-40 h-16 shrink-0 border-b border-border bg-bg/70 backdrop-blur-xl backdrop-saturate-150">
-      <div className="mx-auto flex h-full max-w-7xl items-center gap-6 px-4">
+      <div className="mx-auto flex h-full max-w-7xl items-center gap-3 px-3 sm:gap-6 sm:px-4">
         <Link href="/" className="group flex items-center gap-2.5">
           <span className="bg-brand grid h-9 w-9 place-items-center rounded-xl text-white shadow-lg shadow-fuchsia-500/30 transition-transform group-hover:rotate-6">
             <Database size={18} strokeWidth={2.5} />
@@ -65,7 +65,7 @@ export function Nav() {
           {user ? (
             <AccountMenu user={user} />
           ) : (
-            <Link href="/sign-in" className="btn-primary rounded-full px-4 py-1.5">
+            <Link href="/sign-in" className="btn-primary rounded-full px-4 py-1.5 whitespace-nowrap">
               Sign in
             </Link>
           )}

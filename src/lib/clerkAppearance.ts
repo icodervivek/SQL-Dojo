@@ -47,9 +47,10 @@ export const clerkAppearance = {
  */
 export const authPageAppearance = {
   elements: {
-    rootBox: "w-full",
-    cardBox: "w-full !shadow-none !border-0 !bg-transparent",
-    card: "!bg-transparent !shadow-none !border-0 !p-0",
+    // Clerk's card has a fixed width; let it shrink to fit narrow (phone) screens.
+    rootBox: "!w-full !max-w-full",
+    cardBox: "!w-full !max-w-full !shadow-none !border-0 !bg-transparent",
+    card: "!w-full !max-w-full !bg-transparent !shadow-none !border-0 !p-0",
     header: "!hidden",
     footer: "!bg-transparent !bg-none",
     // The page shows its own "Don't have an account? Sign up" link.

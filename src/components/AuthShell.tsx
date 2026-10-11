@@ -32,7 +32,7 @@ export function AuthShell({
   return (
     <div className="relative flex-1 overflow-x-clip">
       <div className="bg-grid pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto grid w-full max-w-6xl items-stretch gap-6 px-4 py-8 lg:grid-cols-[1.05fr_1fr] lg:py-14">
+      <div className="relative mx-auto grid w-full max-w-6xl items-stretch gap-6 px-3 py-6 sm:px-4 sm:py-8 lg:grid-cols-[1.05fr_1fr] lg:py-14">
         {/* Brand panel */}
         <aside className="bg-brand relative hidden overflow-hidden rounded-3xl p-10 text-white shadow-2xl shadow-fuchsia-500/25 lg:flex lg:flex-col">
           <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
@@ -80,8 +80,8 @@ export function AuthShell({
         </aside>
 
         {/* Form panel */}
-        <section className="glass flex flex-col justify-center rounded-3xl p-6 sm:p-10">
-          <div className="mx-auto w-full max-w-sm">
+        <section className="glass flex min-w-0 flex-col justify-center rounded-3xl px-4 py-7 sm:p-10">
+          <div className="mx-auto w-full max-w-sm min-w-0">
             <p className="text-gradient text-sm font-bold tracking-widest uppercase">{eyebrow}</p>
             <h1 className="mt-1 text-3xl font-extrabold tracking-tight">{title}</h1>
             <p className="mt-2 mb-7 text-sm text-muted">{subtitle}</p>

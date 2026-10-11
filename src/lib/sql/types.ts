@@ -29,7 +29,8 @@ export type WorkerRequest =
   | { id: number; type: "init"; setupSql: string }
   | { id: number; type: "query"; sql: string }
   | { id: number; type: "schema" }
-  | { id: number; type: "grade"; sql: string; expectedSql: string };
+  | { id: number; type: "isolated"; sql: string; checkSql?: string }
+  | { id: number; type: "grade"; sql: string; expectedSql: string; checkSql?: string };
 
 export type WorkerResponse =
   | { id: number; ok: true; result: unknown }

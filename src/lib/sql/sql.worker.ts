@@ -44,11 +44,17 @@ async function run(sql: string): Promise<QueryResult> {
   };
 }
 
-/** Runs `sql` and always rolls back, so grading never changes the data. */
-async function runIsolated(sql: string): Promise<QueryResult> {
+/**
+ * Runs `sql` and always rolls back, so the data never changes. With `checkSql`
+ * (used for INSERT/UPDATE/DELETE/CREATE problems) the result is what `checkSql`
+ * returns after `sql` has run, i.e. the state of the table.
+ */
+async function runIsolated(sql: string, checkSql?: string): Promise<QueryResult> {
   await db!.exec("BEGIN");
   try {
-    return await run(sql);
+    if (!checkSql) return await run(sql);
+    await db!.exec(sql);
+    return await run(checkSql);
   } finally {
     await db!.exec("ROLLBACK");
   }
@@ -93,9 +99,12 @@ self.onmessage = async (event: MessageEvent<WorkerRequest>) => {
       case "schema":
         result = await schema();
         break;
+      case "isolated":
+        result = await runIsolated(req.sql, req.checkSql);
+        break;
       case "grade": {
-        const user = await runIsolated(req.sql);
-        const expected = await runIsolated(req.expectedSql);
+        const user = await runIsolated(req.sql, req.checkSql);
+        const expected = await runIsolated(req.expectedSql, req.checkSql);
         result = { user, expected };
         break;
       }

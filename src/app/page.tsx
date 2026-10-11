@@ -7,16 +7,16 @@ import { HomeProgress } from "@/components/HomeProgress";
 import { CodeWindow } from "@/components/SqlCode";
 import { lessons } from "@/lib/content/lessons";
 import { problems, topics } from "@/lib/content/problems";
+import { HOME_TITLE, SITE_DESCRIPTION } from "@/lib/seo";
 import { datasetList } from "@/lib/datasets";
 
 export const metadata: Metadata = {
+  // `absolute` skips the "%s · SQL Dojo" template, since the brand is already in the title.
+  title: { absolute: HOME_TITLE },
+  description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
-  openGraph: {
-    title: "SQL Dojo · Learn SQL by writing SQL",
-    description:
-      "Learn and practice SQL with a real PostgreSQL database in your browser. Hands-on problems with instant grading, lessons, streaks, badges and an AI tutor.",
-    url: "/",
-  },
+  openGraph: { title: HOME_TITLE, description: SITE_DESCRIPTION, url: "/" },
+  twitter: { title: HOME_TITLE, description: SITE_DESCRIPTION },
 };
 
 const heroQuery = `SELECT d.name AS department,

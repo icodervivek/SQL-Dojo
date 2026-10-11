@@ -2,6 +2,11 @@
 
 export const SITE_NAME = "SQL Dojo";
 
+/** The home page's title and description, also the site-wide defaults. */
+export const HOME_TITLE = `${SITE_NAME} · Learn SQL by writing SQL`;
+export const SITE_DESCRIPTION =
+  "Learn and practice SQL with a real PostgreSQL database in your browser. Hands-on problems with instant grading, step-by-step lessons, streaks, badges and an AI tutor.";
+
 /**
  * The live site's address, used to build absolute links in link previews.
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://sqldojo.in).

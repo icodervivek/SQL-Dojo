@@ -6,6 +6,7 @@ import { Celebrations } from "@/components/Celebrations";
 import { ClerkBridge } from "@/components/ClerkBridge";
 import { Nav } from "@/components/Nav";
 import { clerkAppearance } from "@/lib/clerkAppearance";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -18,9 +19,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const DESCRIPTION =
+  "Learn and practice SQL with a real PostgreSQL database in your browser. Hands-on problems with instant grading, step-by-step lessons, streaks, badges and an AI tutor.";
+
 export const metadata: Metadata = {
-  title: "SQL Dojo",
-  description: "SQL Dojo: learn and practice SQL with real PostgreSQL in your browser. Hands-on problems, lessons, streaks and an AI tutor.",
+  metadataBase: new URL(SITE_URL),
+  // Pages set just their own name ("Problems"); the template adds " · SQL Dojo".
+  title: { default: `${SITE_NAME} · Learn SQL by writing SQL`, template: `%s · ${SITE_NAME}` },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: ["SQL", "learn SQL", "SQL practice", "PostgreSQL", "SQL interview questions", "SQL exercises", "joins", "window functions"],
+  // Shared preview settings only: each page sets its own preview title and description.
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN" },
+  twitter: { card: "summary" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

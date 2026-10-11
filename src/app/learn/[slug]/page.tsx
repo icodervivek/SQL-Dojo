@@ -9,6 +9,7 @@ import { CodeWindow } from "@/components/SqlCode";
 import { TryIt } from "@/components/TryIt";
 import { lessonBySlug, lessons } from "@/lib/content/lessons";
 import { problems } from "@/lib/content/problems";
+import { plainText, truncate } from "@/lib/seo";
 import { topicMeta } from "@/lib/content/topicMeta";
 import { datasets } from "@/lib/datasets";
 
@@ -18,7 +19,18 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/learn/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  return { title: `${lessonBySlug.get(slug)?.title ?? "Lesson"} · SQL Dojo` };
+  const lesson = lessonBySlug.get(slug);
+  if (!lesson) return { title: "Lesson not found" };
+  const firstParagraph = lesson.body.find((b) => b.type === "p");
+  const description = truncate(
+    `${lesson.summary} ${firstParagraph?.type === "p" ? plainText(firstParagraph.text) : ""} Free SQL lesson with a live editor.`,
+  );
+  return {
+    title: `${lesson.title}: SQL Lesson`,
+    description,
+    alternates: { canonical: `/learn/${slug}` },
+    openGraph: { title: `${lesson.title}: SQL Lesson`, description, url: `/learn/${slug}` },
+  };
 }
 
 export default function LessonPage({ params }: PageProps<"/learn/[slug]">) {

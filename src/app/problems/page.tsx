@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import { ProblemList } from "@/components/ProblemList";
+import { problems } from "@/lib/content/problems";
+import { datasetList } from "@/lib/datasets";
+import { SITE_NAME } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Problems · SQL Dojo" };
+const TITLE = "SQL Practice Problems";
+const DESCRIPTION = `${problems.length} SQL practice problems from easy to hard on realistic datasets (${datasetList
+  .map((d) => d.name.toLowerCase())
+  .join(", ")}), graded instantly in your browser.`;
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/problems" },
+  openGraph: { title: `${TITLE} · ${SITE_NAME}`, description: DESCRIPTION, url: "/problems" },
+};
 
 export default function ProblemsPage() {
   return (

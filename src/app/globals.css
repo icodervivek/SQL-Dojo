@@ -5,6 +5,8 @@
   --panel: rgba(255, 255, 255, 0.72);
   --panel-solid: #ffffff;
   --panel-2: rgba(15, 23, 42, 0.04);
+  /* Opaque version of --panel-2, for surfaces that must not show the page behind them. */
+  --panel-muted: #eef0f6;
   --border: rgba(15, 23, 42, 0.09);
   --fg: #0f172a;
   --muted: #64748b;
@@ -29,6 +31,7 @@
     --panel: rgba(22, 22, 38, 0.62);
     --panel-solid: #12121f;
     --panel-2: rgba(255, 255, 255, 0.05);
+    --panel-muted: #1a1a29;
     --border: rgba(255, 255, 255, 0.08);
     --fg: #ecedf6;
     --muted: #9497b0;

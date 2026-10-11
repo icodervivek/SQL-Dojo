@@ -4,7 +4,12 @@ import { Suspense } from "react";
 import { AuthShell } from "@/components/AuthShell";
 import { authPageAppearance } from "@/lib/clerkAppearance";
 
-export const metadata: Metadata = { title: "Sign in · SQL Dojo" };
+export const metadata: Metadata = {
+  title: "Sign in",
+  description: "Sign in to SQL Dojo to run queries, track your progress and keep your streak going.",
+  robots: { index: false, follow: true },
+  openGraph: { title: "Sign in · SQL Dojo" },
+};
 
 export default function Page() {
   return (

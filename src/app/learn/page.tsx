@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import { LessonList } from "@/components/LessonList";
+import { lessons } from "@/lib/content/lessons";
+import { SITE_NAME } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Learn · SQL Dojo" };
+const TITLE = "Learn SQL step by step";
+const DESCRIPTION = `A free SQL learning path: ${lessons.length} short lessons from CREATE TABLE and SELECT to JOINs, CTEs and window functions, each with a live editor to try it yourself.`;
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/learn" },
+  openGraph: { title: `${TITLE} · ${SITE_NAME}`, description: DESCRIPTION, url: "/learn" },
+};
 
 export default function LearnPage() {
   return (

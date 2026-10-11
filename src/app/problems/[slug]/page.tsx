@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Workspace } from "@/components/Workspace";
 import { problemBySlug, problems } from "@/lib/content/problems";
+import { datasets } from "@/lib/datasets";
+import { plainText, truncate } from "@/lib/seo";
 
 export function generateStaticParams() {
   return problems.map((p) => ({ slug: p.slug }));
@@ -10,7 +12,18 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/problems/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  return { title: `${problemBySlug.get(slug)?.title ?? "Problem"} · SQL Dojo` };
+  const problem = problemBySlug.get(slug);
+  if (!problem) return { title: "Problem not found" };
+  const title = `${problem.title}: ${problem.topic} SQL Problem`;
+  const description = truncate(
+    `${problem.difficulty} ${problem.topic} SQL problem on the ${datasets[problem.dataset].name} dataset. ${plainText(problem.description)}`,
+  );
+  return {
+    title,
+    description,
+    alternates: { canonical: `/problems/${slug}` },
+    openGraph: { title, description, url: `/problems/${slug}` },
+  };
 }
 
 export default function ProblemPage({ params }: PageProps<"/problems/[slug]">) {

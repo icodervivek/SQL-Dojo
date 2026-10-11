@@ -10,7 +10,8 @@ export const clerkAppearance = {
     colorBackground: "var(--panel-solid)",
     colorForeground: "var(--fg)",
     colorMutedForeground: "var(--muted)",
-    colorMuted: "var(--panel-2)",
+    // Must be opaque: Clerk paints whole areas with it (e.g. the Account settings sidebar).
+    colorMuted: "var(--panel-muted)",
     colorInput: "var(--panel-solid)",
     colorInputForeground: "var(--fg)",
     colorNeutral: "var(--fg)",
@@ -18,7 +19,7 @@ export const clerkAppearance = {
     colorRing: "#c026d3",
     colorDanger: "var(--danger)",
     colorSuccess: "var(--success)",
-    colorModalBackdrop: "rgba(7, 7, 14, 0.7)",
+    colorModalBackdrop: "rgba(7, 7, 14, 0.82)",
     fontFamily: "var(--font-jakarta)",
     fontFamilyButtons: "var(--font-jakarta)",
     borderRadius: "0.75rem",
@@ -33,6 +34,9 @@ export const clerkAppearance = {
       "!h-11 !border !border-border !bg-panel-2 !shadow-none focus:!border-fuchsia-500/60 focus:!ring-2 focus:!ring-fuchsia-500/30",
     formFieldLabel: "!font-semibold",
     dividerLine: "!bg-border",
+    // Account settings window
+    modalBackdrop: "backdrop-blur-sm",
+    badge: "!bg-fuchsia-500/15 !text-fuchsia-500 !font-semibold",
     footerActionLink: "!text-fuchsia-500 hover:!text-fuchsia-400 font-semibold",
   },
 };

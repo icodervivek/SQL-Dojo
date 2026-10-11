@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, Cpu, Gauge, GraduationCap, ShieldCheck, Sparkles, Zap } from "lucide-react";
 import Link from "next/link";
 import { TopicIcon } from "@/components/Badges";
@@ -7,6 +8,16 @@ import { CodeWindow } from "@/components/SqlCode";
 import { lessons } from "@/lib/content/lessons";
 import { problems, topics } from "@/lib/content/problems";
 import { datasetList } from "@/lib/datasets";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "SQL Dojo · Learn SQL by writing SQL",
+    description:
+      "Learn and practice SQL with a real PostgreSQL database in your browser. Hands-on problems with instant grading, lessons, streaks, badges and an AI tutor.",
+    url: "/",
+  },
+};
 
 const heroQuery = `SELECT d.name AS department,
        COUNT(*) AS people,

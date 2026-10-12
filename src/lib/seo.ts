@@ -11,9 +11,10 @@ export const SITE_DESCRIPTION =
  * The live site's address, used to build absolute links in link previews.
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://sqldojo.in).
  */
-export const SITE_URL =
+export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+  (process.env.NODE_ENV === "production" ? "https://sqldojo.vivekpramanik.in" : "http://localhost:3000")
+).replace(/\/$/, "");
 
 /** Turns content markup (`code`, **bold**, blank lines) into plain text for meta tags. */
 export function plainText(text: string) {

@@ -99,7 +99,7 @@ can break anything for anyone else.
 ### 🎨 Design
 - Modern, colorful UI with glassmorphism, gradients and per-topic colors and icons, in light and dark mode
   (follows your system setting).
-- Page titles, descriptions and link-preview tags for every page, generated from the content for problems and
+- Page titles, descriptions and link-preview tags for every page (plus `sitemap.xml` and `robots.txt`), generated from the content for problems and
   lessons.
 
 ---
@@ -183,7 +183,7 @@ Create a `.env.local` file in the project root. It's git-ignored, so **never com
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅ | Supabase → Project Settings → API (anon / publishable key) |
 | `GROQ_API_KEY` | Optional | [console.groq.com/keys](https://console.groq.com/keys). Without it, the AI tutor is hidden. **Secret.** |
 | `GROQ_MODEL` | Optional | Override the AI model, e.g. `llama-3.3-70b-versatile` ([models](https://console.groq.com/docs/models)) |
-| `NEXT_PUBLIC_SITE_URL` | Optional | Your live address (e.g. `https://sqldojo.in`), used for canonical and link-preview URLs. On Vercel it defaults to the project's production URL. |
+| `NEXT_PUBLIC_SITE_URL` | Optional | Your live address, used for canonical URLs, link previews, `sitemap.xml` and `robots.txt`. Defaults to `https://sqldojo.vivekpramanik.in` in production and `http://localhost:3000` in development. |
 
 ```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
